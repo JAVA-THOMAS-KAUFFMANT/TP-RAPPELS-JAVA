@@ -1,17 +1,34 @@
+import java.util.Random;
+import java.util.Scanner;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Entrée with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Maj+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        boolean game = true;
 
-            // Press Maj+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        while(game) {
+            // Generate random number
+            Random r = new Random();
+            int numberOne = r.nextInt(10-1) + 1;
+            int numberTwo = r.nextInt(10-1) + 1;
+
+            // Print Multiplication
+            System.out.println("=> : " + numberOne + " x " + numberTwo);
+
+            Scanner in = new Scanner(System.in);
+
+            int s = Integer.parseInt(in.nextLine());
+
+            multiplication felix = new multiplication();
+            boolean result = felix.checkResult(numberOne, numberTwo, s);
+
+            if (result == true) {
+                System.out.println("Correct !");
+            } else {
+                System.out.println("Incorrect...");
+            }
         }
     }
 }

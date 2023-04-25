@@ -1,16 +1,13 @@
-import java.io.BufferedReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-import java.io.File;
-import java.io.IOException;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        gameMultiplicator();
-    }
+        writeInAFile();
+    };
 
     public static void gameMultiplicator() {
         boolean game = true;
@@ -69,6 +66,18 @@ public class Main {
             e.printStackTrace();
         }
 
-
+        // Read file
+        try {
+            FileReader fr = new FileReader("thomasFile.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String ligne;
+            while ((ligne = br.readLine()) != null) {
+                System.out.println(ligne);
+            }
+            br.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     };
 }

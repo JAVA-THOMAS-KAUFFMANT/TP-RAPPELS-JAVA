@@ -7,16 +7,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         writeInAFile();
-    };
+    }
+
+    ;
 
     public static void gameMultiplicator() {
         boolean game = true;
 
-        while(game) {
+        while (game) {
             // Generate random number
             Random r = new Random();
-            int numberOne = r.nextInt(10-1) + 1;
-            int numberTwo = r.nextInt(10-1) + 1;
+            int numberOne = r.nextInt(10 - 1) + 1;
+            int numberTwo = r.nextInt(10 - 1) + 1;
 
             // Print Multiplication
             System.out.println("=> : " + numberOne + " x " + numberTwo);
@@ -39,7 +41,9 @@ public class Main {
                 }
             }
         }
-    };
+    }
+
+    ;
 
     public static void writeInAFile() {
         // Create a file
@@ -57,9 +61,32 @@ public class Main {
 
         // Write in a file :
         try {
+            Scanner input = new Scanner(System.in);
+            String s = input.nextLine();
+
+            String current = "";
+            try {
+                FileReader fr = new FileReader("thomasFile.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String ligne;
+                while ((ligne = br.readLine()) != null) {
+                    current += ligne;
+                }
+                br.close();
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             FileWriter myWriter = new FileWriter("thomasFile.txt");
-            myWriter.write("Ceci est un test, Thomas test file");
-            myWriter.close();
+            if (current == "") {
+                myWriter.write(s);
+                myWriter.close();
+            } else {
+                myWriter.write(current + s);
+                myWriter.close();
+            }
+
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
@@ -79,5 +106,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    };
+    }
+
+    ;
 }
